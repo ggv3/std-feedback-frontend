@@ -19,3 +19,4 @@ jobs:
           npm run build
           echo Depoloying...
           ${{ secrets.DEPLOY_SCRIPT }}
+          ${{ secrets.RELOAD_SCRIPT }}
