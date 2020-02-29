@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import config from "../config";
+
+require("dotenv").config();
 
 class Form extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Form extends React.Component {
 
   sendFeedback() {
     axios
-      .post(`${config.endpoint}/add`, {
+      .post(`${process.env.ENDPOINT}/add`, {
         text: this.state.feedback
       })
       .then(response => {
