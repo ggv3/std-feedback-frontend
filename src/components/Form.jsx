@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-require("dotenv").config();
-
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -12,13 +10,12 @@ class Form extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({ feedback: event.target.value });
   }
 
   sendFeedback() {
     axios
-      .post(`${process.env.ENDPOINT}/add`, {
+      .post(`${process.env.REACT_APP_ENDPOINT}/add`, {
         text: this.state.feedback
       })
       .then(response => {
