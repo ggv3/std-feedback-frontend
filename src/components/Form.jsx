@@ -37,7 +37,7 @@ class Form extends React.Component {
           <h3>Anonyymi palaute</h3>
           <p>
             Risuja, ruusuja tai kehuja. Kaikki mitä nyt löytyy mielen päältä.
-            Tänne näin! CI testi
+            Tänne näin!
           </p>
         </div>
         <div>
