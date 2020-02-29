@@ -14,8 +14,9 @@ class Form extends React.Component {
   }
 
   sendFeedback() {
+    const endPoint = process.env.REACT_APP_ENDPOINT;
     axios
-      .post(`${process.env.REACT_APP_ENDPOINT}/add`, {
+      .post(`${endPoint}/add`, {
         text: this.state.feedback
       })
       .then(response => {
