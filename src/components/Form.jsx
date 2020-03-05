@@ -3,24 +3,23 @@ import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import styled from "styled-components";
 import Snackbar from "@material-ui/core/Snackbar";
 
-const Wrapper = styled.div`
+const StyledForm = styled.div`
   margin-top: 100px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-const Section = styled.div`
-  padding: 20px;
-`;
-
 const StyledTextField = styled(TextField)`
-  width: 600px;
+  width: 30%;
+  @media screen and (max-width: 800px) {
+    width: 80%;
+  }
 `;
 
 class Form extends React.Component {
@@ -59,31 +58,24 @@ class Form extends React.Component {
     const disabled =
       this.state.feedback.length < 1 || this.state.feedback.length > 500;
     return (
-      <Wrapper>
-        <Section>
-          <Typography variant="h6">Anonyymi palaute</Typography>
-        </Section>
-        <Section>
-          <Typography>
-            Risuja, ruusuja tai kehuja. Kaikki mitä nyt löytyy mielen päältä.
-            Tänne näin!
-          </Typography>
-        </Section>
-
-        <FormControl>
-          <StyledTextField
-            id="outlined-textarea"
-            multiline
-            variant="outlined"
-            rows="8"
-            value={this.state.feedback}
-            onChange={this.handleChange}
-            aria-describedby="helperText"
-          />
-          <FormHelperText id="helperText">
-            {`${this.state.feedback.length}/500`}
-          </FormHelperText>
-        </FormControl>
+      <StyledForm>
+        <Typography variant="h6">Anonyymi palaute</Typography>
+        <Typography>
+          Risuja, ruusuja tai kehuja. Kaikki mitä nyt löytyy mielen päältä.
+          Tänne näin!
+        </Typography>
+        <StyledTextField
+          id="outlined-textarea"
+          multiline
+          variant="outlined"
+          rows="8"
+          value={this.state.feedback}
+          onChange={this.handleChange}
+          aria-describedby="helperText"
+        />
+        <FormHelperText id="helperText">
+          {`${this.state.feedback.length}/500`}
+        </FormHelperText>
         <Button
           variant="contained"
           color="primary"
@@ -106,7 +98,7 @@ class Form extends React.Component {
               : "Virhe palautteen lähettämisessä, kerro Galloglaichille, niin korjataan asia"
           }
         />
-      </Wrapper>
+      </StyledForm>
     );
   }
 }
